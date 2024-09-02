@@ -1,0 +1,41 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index de24b9f..4e9fc46 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ 
+ set(CMAKE_SYSTEM_NAME $ENV{TARGET_OS})
+ 
+-if(CMAKE_SYSTEM_NAME MATCHES "UNIX")
++if (CMAKE_HOST_UNIX)
+   set (OS_FLAG "-DUNIX=1")
+   # under Unix do dynamic linking so additional libs are required at runtime 
+   set (STATIC_FLAG "")
+@@ -22,7 +22,7 @@ else (CMAKE_SYSTEM_NAME MATCHES "UNIX")
+   # under Window do static linking so no additional libs are required at runtime 
+   set (STATIC_FLAG "-static")
+   message (STATUS "\n \n Building XFoptfoil2 Version $ENV{XOPTFOIL_VERSION} for Windows\n\n")
+-endif (CMAKE_SYSTEM_NAME MATCHES "UNIX")
++endif (CMAKE_HOST_UNIX)
+ 
+ # that's needed to avoid strange make behaviour when installing the exe
+ unset(CMAKE_SYSTEM_NAME)
+@@ -43,6 +43,11 @@ set(ENABLE_OPENMP TRUE
+     CACHE BOOL "Whether to build with OpenMP support."
+ )
+ 
++
++if (NOT CMAKE_BUILD_TYPE)
++  set(CMAKE_BUILD_TYPE "Release")
++endif(NOT CMAKE_BUILD_TYPE)
++
+ # Enable OpenMP by default for Release builds, but disable by default for Debug
+ if (CMAKE_BUILD_TYPE MATCHES "Release")
+   set (OPENMP_FLAG "-fopenmp -DOPENMP=1")
+@@ -102,3 +107,5 @@ add_executable("Xoptfoil2_testdriver"  $<TARGET_OBJECTS:MYOBJLIB> "src/fortran/t
+ # Installation
+ install(TARGETS Xoptfoil2 Worker      DESTINATION bin)
+ install(TARGETS Xoptfoil2_testdriver  DESTINATION bin)
++
++unset(CMAKE_BUILD_TYPE)
+

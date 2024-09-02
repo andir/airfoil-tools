@@ -21,12 +21,20 @@
 
   outputs = { self, flake-parts, ... }@inputs: flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [ "x86_64-linux" ];
-    perSystem = { self', pkgs, ... }: let
-      allPackages = [ self'.packages.xoptofoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 ];
+    imports = [
+      inputs.flake-parts.flakeModules.easyOverlay
+    ];
+
+    perSystem = { self', pkgs, config, ... }: let
+      allPackages = [ self'.packages.xoptfoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 ];
     in {
+      overlayAttrs = {
+        inherit (config.packages) xoptfoil2 airfoileditor planformcreator2;
+        inherit (pkgs) xflr5;
+      };
       packages = {
-        xoptofoil2 = pkgs.stdenv.mkDerivation {
-          pname = "Xoptofoil2";
+        xoptfoil2 = pkgs.stdenv.mkDerivation {
+          pname = "Xoptfoil2";
           version = "git";
           src = inputs.xoptofoil2;
           nativeBuildInputs = [ pkgs.cmake pkgs.gfortran ];
@@ -35,8 +43,9 @@
           ];
           makeFlags = [ "VERBOSE=1" ];
           postInstall = ''
-            mkdir -p $out/share/xoptofoil2
-            cp -rv $src/examples $out/share/xoptofoil2/examples
+            mkdir -p $out/share/xoptfoil2
+            cp -rv $src/examples $out/share/xoptfoil2/examples
+            mv $out/bin/Worker $out/bin/Xoptfoil2_Worker
           '';
         };
 

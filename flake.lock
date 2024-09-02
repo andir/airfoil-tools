@@ -62,11 +62,28 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/356624c12086a18f2ea2825fed34523d60ccc4e3.tar.gz"
       }
     },
+    "planformcreator2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718295136,
+        "narHash": "sha256-2EF4j/XsDwi//Sh/lAZ2lVHNC+WyayCR5DZs1l1n7tA=",
+        "owner": "jxjo",
+        "repo": "PlanformCreator2",
+        "rev": "37024b6eaa2e471f0f1bb27d776b7f3160ad1425",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jxjo",
+        "repo": "PlanformCreator2",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "airfoileditor": "airfoileditor",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
+        "planformcreator2": "planformcreator2",
         "xoptofoil2": "xoptofoil2"
       }
     },

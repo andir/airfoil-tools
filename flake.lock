@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "airfoileditor": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719120445,
+        "narHash": "sha256-eBi633eIOyFxpGRWcYbJ9LzAviKW3GReGYyG3lSUFJI=",
+        "owner": "jxjo",
+        "repo": "AirfoilEditor",
+        "rev": "ebf524319763ae79e0162ef803f61c2abdd9cd79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jxjo",
+        "repo": "AirfoilEditor",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -48,6 +64,7 @@
     },
     "root": {
       "inputs": {
+        "airfoileditor": "airfoileditor",
         "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs",
         "xoptofoil2": "xoptofoil2"

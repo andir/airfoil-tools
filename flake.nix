@@ -5,6 +5,11 @@
       flake = false;
     };
 
+    airfoileditor = {
+      url = "github:jxjo/AirfoilEditor";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
@@ -12,7 +17,7 @@
   outputs = { self, flake-parts, ... }@inputs: flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [ "x86_64-linux" ];
     perSystem = { self', pkgs, ... }: let
-      allPackages = [ self'.packages.xoptofoil2 pkgs.xflr5 ];
+      allPackages = [ self'.packages.xoptofoil2 pkgs.xflr5 self'.packages.airfoileditor ];
     in {
       packages = {
         xoptofoil2 = pkgs.stdenv.mkDerivation {
@@ -29,6 +34,19 @@
             cp -rv $src/examples $out/share/xoptofoil2/examples
           '';
         };
+
+        airfoileditor = let
+          pythonEnv = pkgs.python3.withPackages (p: with p; [
+            numpy
+            matplotlib
+            customtkinter
+            termcolor
+            colorama
+            ezdxf
+          ]);
+        in pkgs.writeShellScriptBin "airfoileditor" ''
+          exec ${pythonEnv}/bin/python ${inputs.airfoileditor}/AirfoilEditor.py "$@"
+        '';
 
         release = pkgs.symlinkJoin {
           name = "release";

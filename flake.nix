@@ -1,7 +1,7 @@
 {
   inputs = {
     xoptofoil2 = {
-      url = "github:andir/Xoptfoil2/fix-build";
+      url = "github:jxjo/Xoptfoil2";
       flake = false;
     };
 

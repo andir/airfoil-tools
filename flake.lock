@@ -107,16 +107,15 @@
     "xoptofoil2": {
       "flake": false,
       "locked": {
-        "lastModified": 1725308577,
-        "narHash": "sha256-WFPvdbavD73RhGZcgW+hTGK3INoF+8u8zMuFkaGhCAc=",
-        "owner": "andir",
+        "lastModified": 1726286100,
+        "narHash": "sha256-xjVeIsJG+bYsNaDVFiaIQ/oXSZntS1QIogbGvCZoXM0=",
+        "owner": "jxjo",
         "repo": "Xoptfoil2",
-        "rev": "b60006d51b8d2bfef85f111b6f755784b4acb3f4",
+        "rev": "5cc7bd5b958199274ad72496f7e197191e3e7751",
         "type": "github"
       },
       "original": {
-        "owner": "andir",
-        "ref": "fix-build",
+        "owner": "jxjo",
         "repo": "Xoptfoil2",
         "type": "github"
       }

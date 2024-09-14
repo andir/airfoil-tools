@@ -15,6 +15,11 @@
       flake = false;
     };
 
+    openvsp = {
+      url = "github:OpenVSP/OpenVSP";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
@@ -26,13 +31,14 @@
     ];
 
     perSystem = { self', pkgs, config, ... }: let
-      allPackages = [ self'.packages.xoptfoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 ];
+      allPackages = [ self'.packages.xoptfoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 self'.packages.openvsp ];
     in {
       overlayAttrs = {
         inherit (config.packages) xoptfoil2 airfoileditor planformcreator2;
         inherit (pkgs) xflr5;
       };
       packages = {
+        openvsp = pkgs.callPackage ./openvsp.nix { src = inputs.openvsp; };
         xoptfoil2 = pkgs.stdenv.mkDerivation {
           pname = "Xoptfoil2";
           version = "git";

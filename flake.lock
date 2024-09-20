@@ -94,6 +94,22 @@
         "type": "github"
       }
     },
+    "pyaero": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705825746,
+        "narHash": "sha256-SIFXDLAQ8AzgdTcvCJQzrNGq/H4mdPXVZGMaGq6W7UI=",
+        "owner": "chiefenne",
+        "repo": "PyAero",
+        "rev": "2aa42dd7f6588e585a6c712052fddce2a1586287",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chiefenne",
+        "repo": "PyAero",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "airfoileditor": "airfoileditor",
@@ -101,6 +117,7 @@
         "nixpkgs": "nixpkgs",
         "openvsp": "openvsp",
         "planformcreator2": "planformcreator2",
+        "pyaero": "pyaero",
         "xoptofoil2": "xoptofoil2"
       }
     },

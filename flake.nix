@@ -20,6 +20,11 @@
       flake = false;
     };
 
+    pyaero = {
+      url = "github:chiefenne/PyAero";
+      flake = false;
+    };
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
@@ -38,6 +43,7 @@
         inherit (pkgs) xflr5;
       };
       packages = {
+        pyaero = pkgs.python3Packages.callPackage ./pyaero.nix { src = inputs.pyaero; };
         openvsp = pkgs.callPackage ./openvsp.nix { src = inputs.openvsp; };
         xoptfoil2 = pkgs.stdenv.mkDerivation {
           pname = "Xoptfoil2";

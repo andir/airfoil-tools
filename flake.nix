@@ -36,7 +36,7 @@
     ];
 
     perSystem = { self', pkgs, config, ... }: let
-      allPackages = [ self'.packages.xoptfoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 self'.packages.openvsp ];
+      allPackages = [ self'.packages.xoptfoil2 pkgs.xflr5 self'.packages.airfoileditor self'.packages.planformcreator2 self'.packages.openvsp self'.packages.pyaero ];
     in {
       overlayAttrs = {
         inherit (config.packages) xoptfoil2 airfoileditor planformcreator2;

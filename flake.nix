@@ -69,6 +69,8 @@
             termcolor
             colorama
             ezdxf
+            pyqt6
+            pyqtgraph
           ]);
         in pkgs.writeShellScriptBin "airfoileditor" ''
           exec ${pythonEnv}/bin/python ${inputs.airfoileditor}/AirfoilEditor.py "$@"

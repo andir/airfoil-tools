@@ -21,6 +21,9 @@ stdenv.mkDerivation {
   preConfigure = "cd SuperProject";
 
   cmakeFlags = [ "-DOpenGL_GL_PREFERENCE=GLVND" ];
+  preBuild = ''
+    chmod -R +rw .
+  '';
 
   buildInputs = [ libGL glew libGLU wayland xorg.libX11 libxkbcommon eigen blas ];
 
